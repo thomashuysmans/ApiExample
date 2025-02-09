@@ -7,8 +7,10 @@ namespace ApiExample.Controllers;
 public class UserSettingsController : ControllerBase
 {
     
-    [HttpGet]
+    [HttpGet()]
     [Route("{userId}")]
+    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     public IActionResult Get([FromRoute] int userId)
     {
 
@@ -26,14 +28,12 @@ public class UserSettingsController : ControllerBase
             });    
         }
 
-        var problemDetails = new ProblemDetails()
+        return BadRequest(new ProblemDetails()
         {
             Status = 400,
             Title = "User not found",
             Detail = "User with id " + userId + " not found"
-        };
-
-        return StatusCode(problemDetails.Status.Value, problemDetails);
+        });
     }
     
     [HttpPost]
