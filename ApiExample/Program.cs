@@ -9,12 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
+        // Adding the JsonStringEnumConverter to serialize enums as strings
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
+// Adding the ProblemDetails middleware to support Problem+JSON responses
 builder.Services.AddProblemDetails();
 
-
+// Setting up the OpenAPI document
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(configure =>
 {
@@ -32,6 +34,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    // Enable the Swagger UI
     app.UseOpenApi();
     app.UseSwaggerUi();
 }
