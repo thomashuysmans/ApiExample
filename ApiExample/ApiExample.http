@@ -1,0 +1,15 @@
+@ApiExample_HostAddress = http://localhost:5133
+
+GET {{ApiExample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+###
+POST {{ApiExample_HostAddress}}/user-settings
+Content-Type: application/json
+
+{
+  "id": 2,
+  "screenSetting": "Light"
+}

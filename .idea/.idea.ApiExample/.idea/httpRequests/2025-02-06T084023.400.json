@@ -1,0 +1,14 @@
+{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "userSettings": [
+      "The userSettings field is required."
+    ],
+    "$.screenSetting": [
+      "The JSON value could not be converted to ApiExample.Controllers.ScreenSetting. Path: $.screenSetting | LineNumber: 2 | BytePositionInLine: 26."
+    ]
+  },
+  "traceId": "00-193b6b7a636ffb9f5f0db311b58af62e-a1437abbac9c8c7a-00"
+}
